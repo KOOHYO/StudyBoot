@@ -11,9 +11,18 @@
 		limit #{startRow}, #{perPage}
 	</select>
 	
-	<insert id="setAdd" parameterType="com.ko.home.board.qna.QnaVO">
+	<insert id="setAdd" parameterType="QnaVO" useGeneratedKeys="true">
 		INSERT INTO QNA (NUM, WRITER, TITLE, CONTENTS, HIT, REGDATE, REF, STEP, DEPTH)
 		VALUES (#{num}, #{writer}, #{title}, #{contents}, 0, sysdate(), 0, 0, 0)
 	</insert>
+	
+	<insert id="setFileAdd" parameterType="QnaFileVO">
+		INSERT INTO QNAFILES
+		VALUES (NULL, #{num}, #{fileName}, #{oriName})
+	</insert>
+	
+	<select id="getDetail" parameterType="QnaVO" resultType="QnaVO">
+		SELECT * FROM QNA WHERE NUM=#{num}
+	</select>
 	
 </mapper>

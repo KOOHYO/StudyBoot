@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,27 +12,29 @@
 	<div class="container">
 		<div class="row justify-content-md-center">
 			<div class="col-7">
-				<h1>List Page</h1>
+				<h1>Detail Page</h1>
 				<table class="table">
 					<thead>
 						<tr>
 							<th>NUM</th>
 							<th>TITLE</th>
+							<th>CONTENTS</th>
 							<th>WRITER</th>
-							<th>DATE</th>
+							<th>REGDATE</th>
 							<th>HIT</th>
+							<th>REF</th>
+							<th>STEP</th>
+							<th>DEPTH</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${list}" var="dto">
 							<tr>
 								<td>${dto.num}</td>
-								<td><a href="detal?num=${dto.num}">${dto.title}</a></td>
+								<td>${dto.title}</td>
 								<td>${dto.writer}</td>
 								<td>${dto.regDate}</td>
 								<td>${dto.hit}</td>
 							</tr>
-						</c:forEach>
 					</tbody>
 				</table>
 					
@@ -43,16 +44,5 @@
 			</div>
 		</div>
 	</div>
-	
-<script type="text/javascript">
-	let result = '${param.result}';
-	if(result != ""){
-		if(result == '1'){
-			alert('등록성공');
-		}else {
-			alert('등록실패');
-		}
-	}
-</script>
 </body>
 </html>

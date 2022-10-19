@@ -76,5 +76,13 @@ class QnaMapperTest {
 		}
 		System.out.println("for문 끝");
 	}
+	
+	//@Test
+	void getDetailTest()throws Exception{
+		QnaVO qnaVO = new QnaVO();
+		qnaVO.setNum(103L);
+		qnaVO = qnaMapper.getDetail(qnaVO);
+		assertNotNull(qnaVO);
+	}
 
 }
