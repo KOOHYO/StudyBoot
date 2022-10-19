@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE mapper
+		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ko.home.board.qna.QnaMapper">
+	
+	<select id="getList" parameterType="Pager" resultType="com.ko.home.board.qna.QnaVO">
+		SELECT * 
+		FROM QNA
+		ORDER BY NUM DESC
+		limit #{startRow}, #{perPage}
+	</select>
+	
+	<insert id="setAdd" parameterType="com.ko.home.board.qna.QnaVO">
+		INSERT INTO QNA (NUM, WRITER, TITLE, CONTENTS, HIT, REGDATE, REF, STEP, DEPTH)
+		VALUES (#{num}, #{writer}, #{title}, #{contents}, 0, sysdate(), 0, 0, 0)
+	</insert>
+	
+</mapper>
