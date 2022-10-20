@@ -55,6 +55,7 @@ public class QnaController {
 		List<QnaVO> ar = qnaService.getList(pager);
 		
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/list");
 		
 		return mv;

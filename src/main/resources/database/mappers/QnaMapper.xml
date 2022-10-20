@@ -4,16 +4,15 @@
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ko.home.board.qna.QnaMapper">
 	
-	<select id="getList" parameterType="Pager" resultType="com.ko.home.board.qna.QnaVO">
-		SELECT * 
-		FROM QNA
+	<select id="getList" parameterType="Pager" resultType="QnaVO">
+		SELECT * FROM QNA
 		ORDER BY NUM DESC
 		limit #{startRow}, #{perPage}
 	</select>
 	
-	<insert id="setAdd" parameterType="QnaVO" useGeneratedKeys="true">
+	<insert id="setAdd" parameterType="QnaVO" useGeneratedKeys="true" keyProperty="num">
 		INSERT INTO QNA (NUM, WRITER, TITLE, CONTENTS, HIT, REGDATE, REF, STEP, DEPTH)
-		VALUES (#{num}, #{writer}, #{title}, #{contents}, 0, sysdate(), 0, 0, 0)
+		VALUES (#{num}, #{writer}, #{title}, #{contents}, 0, now(), 0, 0, 0)
 	</insert>
 	
 	<insert id="setFileAdd" parameterType="QnaFileVO">
@@ -22,7 +21,12 @@
 	</insert>
 	
 	<select id="getDetail" parameterType="QnaVO" resultType="QnaVO">
-		SELECT * FROM QNA WHERE NUM=#{num}
+		SELECT Q.TITLE, Q.CONTENTS, Q.WRITER, Q.REGDATE, Q.HIT, Q.REF, Q.STEP, Q.DEPTH, QF.FILENUM, QF.NUM, QF.FILENAME
+		FROM QNA Q
+			LEFT JOIN
+			QNAFILES QF
+			ON (Q.NUM = QF.NUM)
+		WHERE Q.NUM=#{num}
 	</select>
 	
 </mapper>

@@ -35,12 +35,12 @@ public class QnaService {
 	
 	public int setAdd(QnaVO qnaVO)throws Exception{
 		
-		log.info("realPath {} ", path);
+		int result = qnaMapper.setAdd(qnaVO);
+		
 		File file = new File(path);
 		
 		if(!file.exists()) {
 			boolean check =  file.mkdirs();
-			log.info("Check {} ", check);
 		}
 		
 		
@@ -49,6 +49,7 @@ public class QnaService {
 				log.info("FileName {} ", f.getOriginalFilename());
 				String fileName = fileManager.saveFile(f, path);
 				QnaFileVO qnaFileVO = new QnaFileVO();
+				qnaFileVO.setNum(qnaVO.getNum());
 				qnaFileVO.setFileName(fileName);
 				qnaFileVO.setOriName(f.getOriginalFilename());
 				qnaFileVO.setNum(qnaVO.getNum());
@@ -56,7 +57,7 @@ public class QnaService {
 				
 			}
 		}
-		return qnaMapper.setAdd(qnaVO);
+		return result;
 	}
 	
 	public List<QnaVO> getList(Pager pager)throws Exception{

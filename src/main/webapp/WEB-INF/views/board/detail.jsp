@@ -31,6 +31,7 @@
 							<tr>
 								<td>${dto.num}</td>
 								<td>${dto.title}</td>
+								<td>${dto.contents}</td>
 								<td>${dto.writer}</td>
 								<td>${dto.regDate}</td>
 								<td>${dto.hit}</td>

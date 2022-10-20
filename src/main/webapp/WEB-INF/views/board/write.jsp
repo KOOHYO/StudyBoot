@@ -16,8 +16,8 @@
 				<h1>Wite Page</h1>
 				<form action="add" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
-					  <label for="titel" class="form-label">TITEL</label>
-					  <input type="text" class="form-control" name="titel" id="titel" placeholder="제목을 입력하세요">
+					  <label for="title" class="form-label">TITEL</label>
+					  <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력하세요">
 					</div>
 					<div class="mb-3">
 					  <label for="writer" class="form-label">WRITER</label>
@@ -25,15 +25,15 @@
 					</div>
 					<div class="mb-3">
 					  <label for="contents" class="form-label">CONTENTS</label>
-					  <textarea class="form-control" name="contents" id="contents" rows="3"></textarea>
+					  <textarea class="form-control" name="contents" id="contents"></textarea>
 					</div>
 					<div class="mb-3">
 					  <label for="file" class="form-label">FILE</label>
-					  <input type="file" class="form-control" name="files" id="file">
+					  <input type="file" class="form-control" name="files">
 					</div>
 					<div class="mb-3">
 					  <label for="file" class="form-label">FILE</label>
-					  <input type="file" class="form-control" name="files" id="file">
+					  <input type="file" class="form-control" name="files">
 					</div>
 					<div>
 						<button class="btn btn-info">WRITE</button>
