@@ -28,11 +28,6 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@GetMapping("detail")
-	public String getDetail()throws Exception {
-		return "board/detail";
-	}
-	
-	@PostMapping("detail")
 	public ModelAndView getDetail(QnaVO qnaVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		qnaVO = qnaService.getDetail(qnaVO);

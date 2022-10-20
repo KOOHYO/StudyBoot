@@ -34,6 +34,9 @@
 								<td>${dto.writer}</td>
 								<td>${dto.regDate}</td>
 								<td>${dto.hit}</td>
+								<td>${dto.ref}</td>
+								<td>${dto.step}</td>
+								<td>${dto.depth}</td>
 							</tr>
 					</tbody>
 				</table>
