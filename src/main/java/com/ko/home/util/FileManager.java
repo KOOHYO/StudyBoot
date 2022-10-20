@@ -28,10 +28,11 @@ public class FileManager extends AbstractView {
 		HttpServletResponse response) throws Exception {
 		
 		QnaFileVO qnaFileVO = (QnaFileVO) model.get("fileVO");
+		String path = (String) model.get("path");
 		log.info("=================================");
 		log.info("FILEVO {} ", qnaFileVO);
 		
-		File file = new File("D:/result/upload/qna/", qnaFileVO.getFileName());
+		File file = new File("D:/result/upload/"+path, qnaFileVO.getFileName());
 		
 		//한글 처리 (인코딩처리)
 		response.setCharacterEncoding("UTF-8");

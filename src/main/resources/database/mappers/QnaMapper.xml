@@ -20,13 +20,30 @@
 		VALUES (NULL, #{num}, #{fileName}, #{oriName})
 	</insert>
 	
-	<select id="getDetail" parameterType="QnaVO" resultType="QnaVO">
-		SELECT Q.TITLE, Q.CONTENTS, Q.WRITER, Q.REGDATE, Q.HIT, Q.REF, Q.STEP, Q.DEPTH, QF.FILENUM, QF.NUM, QF.FILENAME
+	<select id="getDetail" parameterType="QnaVO" resultMap="getDetailResult">
+		SELECT Q.NUM, Q.TITLE, Q.CONTENTS, Q.WRITER, Q.REGDATE, Q.HIT, Q.REF, Q.STEP, Q.DEPTH, QF.FILENUM, QF.NUM, QF.FILENAME, QF.ORINAME
 		FROM QNA Q
 			LEFT JOIN
 			QNAFILES QF
 			ON (Q.NUM = QF.NUM)
 		WHERE Q.NUM=#{num}
 	</select>
+	<resultMap type="QnaVO" id="getDetailResult">
+		<id column="NUM" property="num"/>
+		<result column="TITLE" property="title"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="WRITER" property="writer"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="HIT" property="hit"/>
+		<result column="REF" property="ref"/>
+		<result column="STEP" property="step"/>
+		<result column="DEPTH" property="depth"/>
+		<collection property="qnaFileVOs" javaType="QnaFileVO" ofType="List">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="NUM" property="num"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
 	
 </mapper>

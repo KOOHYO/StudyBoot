@@ -7,5 +7,7 @@
 		<typeAlias type="com.ko.home.board.qna.QnaVO" alias="QnaVO"/>
 		<typeAlias type="com.ko.home.util.Pager" alias="Pager"/>
 		<typeAlias type="com.ko.home.board.qna.QnaFileVO" alias="QnaFileVO"/>
+		<typeAlias type="org.springframework.web.multipart.MultipartFile" alias="MultipartFile"/>
+		<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
 </configuration>

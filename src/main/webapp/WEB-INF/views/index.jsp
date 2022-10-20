@@ -15,7 +15,9 @@
 	<a href="./qna/list">QNA</a>
 	<div>
 		<img src="/file/qna/cat.jpg">
-		<a href="/fileDown/qna?fileNum=17">DOWN</a>
+		<img src="/file/notice/cat3.jpg">
+		<a href="/fileDown/qna?fileNum=17">QNADOWN</a>
+		<a href="/fileDown/notice?fileNum=17">NOTICEDOWN</a>
 	</div>
 </body>
 </html>

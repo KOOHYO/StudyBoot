@@ -30,7 +30,12 @@ public class QnaController {
 	@GetMapping("detail")
 	public ModelAndView getDetail(QnaVO qnaVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		QnaFileVO qnaFileVO = new QnaFileVO();
 		qnaVO = qnaService.getDetail(qnaVO);
+		for(QnaFileVO f :qnaVO.getQnaFileVOs()) {
+			qnaFileVO.setFileName(f.getFileName());
+			qnaFileVO.setFileNum(null);
+		}
 		mv.addObject("dto", qnaVO);
 		mv.setViewName("board/detail");
 		return mv;

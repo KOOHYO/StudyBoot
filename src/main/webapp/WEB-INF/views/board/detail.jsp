@@ -41,6 +41,13 @@
 							</tr>
 					</tbody>
 				</table>
+				<div class="row">
+					<c:forEach items="${dto.files}" var="file">
+						<p>
+							<a href="../result/upload/qna/${file.fileName}">${file.oriName}</a>
+						</p>
+					</c:forEach>
+				</div>
 					
 				<div>
 					<a href="./add" class="btn btn-info">WRITE</a>
