@@ -38,7 +38,7 @@
 		<result column="REF" property="ref"/>
 		<result column="STEP" property="step"/>
 		<result column="DEPTH" property="depth"/>
-		<collection property="qnaFileVOs" javaType="QnaFileVO" ofType="List">
+		<collection property="qnaFileVOs" javaType="List" ofType="QnaFileVO">
 			<id column="FILENUM" property="fileNum"/>
 			<result column="NUM" property="num"/>
 			<result column="FILENAME" property="fileName"/>
