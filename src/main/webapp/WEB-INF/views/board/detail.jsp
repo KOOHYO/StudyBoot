@@ -42,7 +42,7 @@
 					</tbody>
 				</table>
 				<div class="row">
-					<c:forEach items="${dto.files}" var="file">
+					<c:forEach items="${dto.qnaFileVOs}" var="file">
 						<p>
 							<a href="/file/upload/${file.fileName}">${file.oriName}</a>
 							<a href="/file/upload/${file.fileName}">${file.oriName}</a>
