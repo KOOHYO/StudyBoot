@@ -18,6 +18,9 @@ public class HomeController {
 	
 	@Value("${my.message.hi}")
 	private String message;
+	
+	@Value("${my.defalut}")
+	private String app;
 
 	//slf4j
 	//private final Logger log = LoggerFactory.getLogger(HomeController.class);
@@ -26,13 +29,19 @@ public class HomeController {
 	@Autowired
 	private QnaMapper qnaMapper;
 	
-	//@GetMapping("/")
+	@GetMapping("/")
 	public String home() throws Exception {
-		log.error("Error Message");
-		log.warn("Warn Message");
-		log.info("Info Message");
-		log.debug("Debug Message");
-		log.trace("Trace Message");
+		
+		log.info("------------------------");
+		log.info("message : {} ", message);
+		log.info("app : {} ", app);
+		log.info("------------------------");
+		
+//		log.error("Error Message");
+//		log.warn("Warn Message");
+//		log.info("Info Message");
+//		log.debug("Debug Message");
+//		log.trace("Trace Message");
 		
 //		List<QnaVO> ar = qnaMapper.getList();
 		

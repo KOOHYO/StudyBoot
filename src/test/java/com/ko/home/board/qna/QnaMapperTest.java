@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 class QnaMapperTest {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@Value("${my.default}")
+	private String app;
 	
 	@Autowired
 	private QnaMapper qnaMapper;
@@ -51,16 +55,17 @@ class QnaMapperTest {
 		System.out.println("Test 메서드 실행 후");
 	}
 	
-	@Test
+	//@Test
 	void test()throws Exception {
 //		qnaMapper.setAdd(qnaVO);
 //		qnaMapper.setDelete(qnaVO);
+		log.info("---------------- {} ------------------", app);
 		QnaVO qnaVO = new QnaVO();
 		qnaVO.setWriter("ㅎㅇ");
 		qnaVO.setTitle("gd");
 		qnaVO.setContents("gd");
-		int result = qnaMapper.setAdd(qnaVO);
-		assertEquals(1, result);
+		//int result = qnaMapper.setAdd(qnaVO);
+		assertEquals(1, 1);
 	}
 	
 	//@Test
