@@ -13,8 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
+//@Rollback(true)
+@Transactional
 class QnaMapperTest {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -47,11 +51,16 @@ class QnaMapperTest {
 		System.out.println("Test 메서드 실행 후");
 	}
 	
-	//@Test
-	void test() {
-		log.info("Test2 Case");
+	@Test
+	void test()throws Exception {
 //		qnaMapper.setAdd(qnaVO);
 //		qnaMapper.setDelete(qnaVO);
+		QnaVO qnaVO = new QnaVO();
+		qnaVO.setWriter("ㅎㅇ");
+		qnaVO.setTitle("gd");
+		qnaVO.setContents("gd");
+		int result = qnaMapper.setAdd(qnaVO);
+		assertEquals(1, result);
 	}
 	
 	//@Test

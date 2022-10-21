@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ko.home.util.FileManager;
@@ -33,6 +34,8 @@ public class QnaService {
 		return qnaMapper.getDetail(qnaVO);
 	}
 	
+	//예외가 발생하면 롤백을 시켜라
+	@Transactional(rollbackFor = Exception.class)
 	public int setAdd(QnaVO qnaVO)throws Exception{
 		
 		int result = qnaMapper.setAdd(qnaVO);
@@ -45,6 +48,10 @@ public class QnaService {
 		
 		
 		for(MultipartFile f : qnaVO.getFiles()) {
+			if(f.isEmpty()) {
+				log.info("--------------- Exception 발생 -------------");
+				throw new Exception();
+			}
 			if(!f.isEmpty()) {
 				log.info("FileName {} ", f.getOriginalFilename());
 				String fileName = fileManager.saveFile(f, path);
@@ -57,7 +64,7 @@ public class QnaService {
 				
 			}
 		}
-		return result;
+		return 0;//result;
 	}
 	
 	public List<QnaVO> getList(Pager pager)throws Exception{
