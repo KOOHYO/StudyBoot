@@ -48,10 +48,7 @@ public class QnaService {
 		
 		
 		for(MultipartFile f : qnaVO.getFiles()) {
-			if(f.isEmpty()) {
-				log.info("--------------- Exception 발생 -------------");
-				throw new Exception();
-			}
+
 			if(!f.isEmpty()) {
 				log.info("FileName {} ", f.getOriginalFilename());
 				String fileName = fileManager.saveFile(f, path);
@@ -64,7 +61,7 @@ public class QnaService {
 				
 			}
 		}
-		return 0;//result;
+		return result;
 	}
 	
 	public List<QnaVO> getList(Pager pager)throws Exception{
