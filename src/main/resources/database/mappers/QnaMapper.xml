@@ -21,7 +21,7 @@
 	</insert>
 	
 	<select id="getDetail" parameterType="QnaVO" resultMap="getDetailResult">
-		SELECT Q.NUM, Q.TITLE, Q.CONTENTS, Q.WRITER, Q.REGDATE, Q.HIT, Q.REF, Q.STEP, Q.DEPTH, QF.FILENUM, QF.NUM, QF.FILENAME, QF.ORINAME
+		SELECT Q.*, QF.*
 		FROM QNA Q
 			LEFT JOIN
 			QNAFILES QF
@@ -40,7 +40,8 @@
 		<result column="DEPTH" property="depth"/>
 		<collection property="qnaFileVOs" javaType="List" ofType="QnaFileVO">
 			<id column="FILENUM" property="fileNum"/>
-			<result column="NUM" property="num"/>
+			<!-- 굳이 똑같은 값을 넣지 않아도 된다 -->
+			<!-- <result column="NUM" property="num"/> -->
 			<result column="FILENAME" property="fileName"/>
 			<result column="ORINAME" property="oriName"/>
 		</collection>

@@ -29,20 +29,20 @@
 					</thead>
 					<tbody>
 							<tr>
-								<td>${dto.num}</td>
-								<td>${dto.title}</td>
-								<td>${dto.contents}</td>
-								<td>${dto.writer}</td>
-								<td>${dto.regDate}</td>
-								<td>${dto.hit}</td>
-								<td>${dto.ref}</td>
-								<td>${dto.step}</td>
-								<td>${dto.depth}</td>
+								<td>${vo.num}</td>
+								<td>${vo.title}</td>
+								<td>${vo.contents}</td>
+								<td>${vo.writer}</td>
+								<td>${vo.regDate}</td>
+								<td>${vo.hit}</td>
+								<td>${vo.ref}</td>
+								<td>${vo.step}</td>
+								<td>${vo.depth}</td>
 							</tr>
 					</tbody>
 				</table>
 				<div class="row">
-					<c:forEach items="${dto.qnaFileVOs}" var="file">
+					<c:forEach items="${vo.qnaFileVOs}" var="file">
 						<p>
 							<a href="/file/qna/${file.fileName}">${file.oriName}</a>
 						</p>
