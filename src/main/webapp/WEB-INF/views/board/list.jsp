@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="row justify-content-md-center">
 			<div class="col-7">
-				<h1>List Page</h1>
+				<h1><b>List Page</b></h1>
 				<table class="table">
 					<thead>
 						<tr>

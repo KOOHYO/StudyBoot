@@ -1,5 +1,7 @@
 package com.ko.home.member;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -10,5 +12,7 @@ public class MemberVO {
 	private String name;
 	private String email;
 	private boolean enabled;
+	
+	private List<MemberRoleVO> memberRoleVOs;
 	
 }

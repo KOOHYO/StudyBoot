@@ -8,6 +8,7 @@
 		<typeAlias type="com.ko.home.util.Pager" alias="Pager"/>
 		<typeAlias type="com.ko.home.board.qna.QnaFileVO" alias="QnaFileVO"/>
 		<typeAlias type="com.ko.home.member.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.ko.home.member.MemberRoleVO" alias="MemberRoleVO"/>
 		<typeAlias type="java.util.List" alias="List"/>
 	</typeAliases>
 </configuration>

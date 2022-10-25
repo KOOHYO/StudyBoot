@@ -45,7 +45,7 @@ public class QnaController {
 	public String setAdd(QnaVO qnaVO, RedirectAttributes redirectAttributes)throws Exception {
 		int result = qnaService.setAdd(qnaVO);
 		redirectAttributes.addAttribute("result", result);
-		return "";//"redirect:./list";
+		return "redirect:./list";
 	}
 	
 	@GetMapping("add")

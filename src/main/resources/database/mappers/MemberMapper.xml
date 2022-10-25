@@ -7,4 +7,31 @@
 		INSERT INTO MEMBER
 		VALUES (#{id}, #{pw}, #{name}, #{email}, 1)
 	</insert>
+	
+	<select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
+		SELECT M.ID, M.NAME, M.EMAIL, MR.NUM, R.ROLENAME
+		FROM MEMBER M
+			INNER JOIN
+			MEMBER_ROLE MR
+			ON (M.ID = MR.ID)
+			INNER JOIN
+			ROLE R
+			ON (MR.NUM = R.NUM)
+		WHERE M.ID=#{id} AND M.PW=#{pw}
+		ORDER BY R.NUM ASC
+	</select>
+	<resultMap type="MemberVO" id="getLoginResult">
+		<id column="ID" property="id"/>
+		<result column="NAME" property="name"/>
+		<result column="EMAIL" property="email"/>
+		<collection property="memberRoleVOs" javaType="List" ofType="MemberRoleVO">
+			<id column="NUM" property="num"/>
+			<result column="ROLENAME" property="roleName"/>
+		</collection>
+	</resultMap>
+	
+	<insert id="setMemberRole" parameterType="MemberVO">
+		INSERT INTO MEMBER_ROLE
+		VALUES (#{id}, 3)
+	</insert>
 </mapper>

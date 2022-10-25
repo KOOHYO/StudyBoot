@@ -25,5 +25,17 @@ class MemberServiceTest {
 		assertEquals(1, result);
 		
 	}
+	
+	//@Test
+	void getLoginTest()throws Exception{
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId("koo");
+		memberVO.setPw("koo");
+		
+		memberVO = memberService.getLogin(memberVO);
+		
+		assertNotNull(memberVO);
+		
+	}
 
 }
