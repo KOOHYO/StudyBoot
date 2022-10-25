@@ -37,6 +37,11 @@ public class FileManageController {
 		//FileManager 클래스를 찾아간다
 		mv.setViewName("fileManager");
 		
+//		// BeanNameResolver :
+//		// view의 이름과 일치하는 Bean의 이름이 있으면 해당 Bean실행
+//		
+//		// InternalResourceViewResolver
+//		// /WEB-INF/views/fileManager.jsp
 		return mv;
 	}
 	
