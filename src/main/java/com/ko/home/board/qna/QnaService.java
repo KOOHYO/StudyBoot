@@ -30,10 +30,6 @@ public class QnaService {
 	@Value("${app.upload.qna}")
 	private String path;
 	
-	public QnaVO getDetail(QnaVO qnaVO)throws Exception{
-		return qnaMapper.getDetail(qnaVO);
-	}
-	
 	//예외가 발생하면 롤백을 시켜라
 	@Transactional(rollbackFor = Exception.class)
 	public int setAdd(QnaVO qnaVO)throws Exception{
@@ -67,6 +63,14 @@ public class QnaService {
 	public List<QnaVO> getList(Pager pager)throws Exception{
 		pager.getRowNum();
 		return qnaMapper.getList(pager);
+	}
+	
+	public QnaVO getDetail(QnaVO qnaVO)throws Exception{
+		return qnaMapper.getDetail(qnaVO);
+	}
+	
+	public QnaFileVO getFileDetail(QnaFileVO qnaFileVO)throws Exception{
+		return qnaMapper.getFileDetail(qnaFileVO);
 	}
 	
 }

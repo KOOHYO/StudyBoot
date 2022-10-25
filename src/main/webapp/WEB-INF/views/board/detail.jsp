@@ -42,9 +42,11 @@
 					</tbody>
 				</table>
 				<div class="row">
-					<c:forEach items="${vo.qnaFileVOs}" var="file">
+					<c:forEach items="${vo.qnaFileVOs}" var="fileVO">
 						<p>
-							<a href="/file/qna/${file.fileName}">${file.oriName}</a>
+							<img alt="" src="/file/qna/${fileVO.fileName}">
+							<%-- <a href="/file/qna/${fileVO.fileName}">${fileVO.oriName}</a> --%>
+							<a href="/fileDown/qna?fileNum=${fileVO.fileNum}">${fileVO.oriName}</a>
 						</p>
 					</c:forEach>
 				</div>
