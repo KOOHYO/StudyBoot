@@ -76,8 +76,15 @@ public class MemberController {
 	public String setLogout(HttpSession session)throws Exception{
 		
 		session.invalidate();
-		
+
 		return "redirect:../";
+	}
+	
+	@PostMapping("idCheck")
+	public int getIdCheck(MemberVO memberVO)throws Exception{
+		int result = memberService.getIdCheck(memberVO);
+		
+		return result;
 	}
 	
 }

@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/boot.jsp"></c:import>
+<script defer src="/js/util.js"></script>
+<script defer src="/js/memberJoin.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -44,6 +46,7 @@
 					<div class="mb-4">
 						<label for="ipEmail" class="form-label"><b>이메일</b></label>
 						<input type="text" name="email" class="form-control border-primary border-opacity-25" id="ipEmail" placeholder="이메일을 입력해주세요">
+						<div class="text-danger" id="ipEmailResult"></div>
 					</div>
 
 					<!-- 구분선 -->
@@ -53,9 +56,34 @@
 
 					<!-- 회원가입 버튼 -->
 					<div class="d-grid gap-2 mt-3">
-						<button type="submit" class="btn btn-outline-primary" id="btn"><b>✅회원가입</b></button>
+						<button type="button" id="joinBtn" class="btn btn-outline-primary"><b>✅회원가입</b></button>
 					</div>
 				</form>
+
+				<!-- 약관 Test -->
+				<div class="my-5">
+					<div>
+						ALL <input type="checkbox" id="all">
+					</div>
+					<div>
+						동의1 <input type="checkbox" class="check">
+						<div>
+							약관1
+						</div>
+					</div>
+					<div>
+						동의2 <input type="checkbox" class="check">
+						<div>
+							약관2
+						</div>
+					</div>
+					<div>
+						동의3 <input type="checkbox" class="check">
+						<div>
+							약관3
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -10,5 +10,6 @@
 		<typeAlias type="com.ko.home.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.ko.home.member.MemberRoleVO" alias="MemberRoleVO"/>
 		<typeAlias type="java.util.List" alias="List"/>
+		<typeAlias type="java.lang.Integer" alias="Integer"/>
 	</typeAliases>
 </configuration>

@@ -38,4 +38,13 @@ class MemberServiceTest {
 		
 	}
 
+	//@Test
+	void getIdCheckTest()throws Exception{
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId("koo");
+		
+		int result = memberService.getIdCheck(memberVO);
+		assertEquals(1, result);
+	}
+	
 }

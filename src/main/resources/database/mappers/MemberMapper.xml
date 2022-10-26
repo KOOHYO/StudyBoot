@@ -34,4 +34,7 @@
 		INSERT INTO MEMBER_ROLE
 		VALUES (#{id}, 3)
 	</insert>
+	<select id="getIdCheck" parameterType="MemberVO" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id}
+	</select>
 </mapper>
