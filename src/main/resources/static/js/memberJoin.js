@@ -53,7 +53,9 @@ $("#ipId").blur(function(){
     xhttp.onreadystatechange=function(){
         if(this.readyState==4 && this.status==200){
             if(this.responseText.trim()=='1'){
-                
+                $("#ipIdResult").html("이미 있는 아이디 입니다");
+            }else{
+                $("#ipIdResult").html("사용 가능한 아이디 입니다");
             }
         }
     }
