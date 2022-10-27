@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <c:import url="./temp/boot.jsp"></c:import>
 <link href="/css/test.css" rel="stylesheet">
-<script defer src="/js/test.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -40,17 +39,6 @@
 			<a href="/fileDown/qna?fileNum=17">QNADOWN</a>
 			<a href="/fileDown/notice?fileNum=17">NOTICEDOWN</a>
 		</div>
-
-		<button id="btn" class="btn btn-outline-primary">CLICK</button>
-
-		<button class="btn btn-outline-primary buttons">CLICK2</button>
-		<button class="btn btn-outline-primary buttons">CLICK3</button>
-		<button class="btn btn-outline-primary buttons">CLICK4</button>
-
-		<div id="test">
-
-		</div>
-
 	</div>
 </body>
 </html>

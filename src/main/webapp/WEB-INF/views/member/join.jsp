@@ -66,38 +66,6 @@
 					<button type="button" id="test2" class="btn btn-outline-primary">Ajax GET Test</button>
 					<button type="button" id="test3" class="btn btn-outline-primary">Ajax POST Test</button>
 				</div>
-
-				<!-- 약관 Test -->
-				<div class="my-5">
-					<div>
-						ALL <input type="checkbox" id="all">
-					</div>
-					<div>
-						동의1 <input type="checkbox" class="check">
-						<div>
-							약관1
-						</div>
-					</div>
-					<div>
-						동의2 <input type="checkbox" class="check">
-						<div>
-							약관2
-						</div>
-					</div>
-					<div>
-						동의3 <input type="checkbox" class="check">
-						<div>
-							약관3
-						</div>
-					</div>
-				</div>
-				<div>
-					<select name="" id="s1">
-						<option value="">1</option>
-						<option value="">2</option>
-					</select>
-					<button type="button" id="s1Add">Add</button>
-				</div>
 			</div>
 		</div>
 	</div>

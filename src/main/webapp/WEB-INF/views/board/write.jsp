@@ -35,6 +35,14 @@
 					  <label for="file" class="form-label">FILE</label>
 					  <input type="file" class="form-control" name="files">
 					</div>
+					
+					<div class="mb-3">
+
+					</div>
+					<div class="mb-3">
+						<button type="button">FileAdd</button>
+					</div>
+
 					<div>
 						<button class="btn btn-info">WRITE</button>
 					</div>
