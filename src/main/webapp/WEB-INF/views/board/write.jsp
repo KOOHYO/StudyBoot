@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <c:import url="../temp/summer.jsp"></c:import>
 <c:import url="../temp/boot.jsp"></c:import>
+<script defer src="/js/fileManager.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -19,28 +20,31 @@
 					  <label for="title" class="form-label">TITEL</label>
 					  <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력하세요">
 					</div>
+
 					<div class="mb-3">
 					  <label for="writer" class="form-label">WRITER</label>
 					  <input type="text" class="form-control" name="writer" id="writer" placeholder="작성자를 입력하세요">
 					</div>
+					
 					<div class="mb-3">
 					  <label for="contents" class="form-label">CONTENTS</label>
 					  <textarea class="form-control" name="contents" id="contents"></textarea>
 					</div>
-					<div class="mb-3">
+
+					<!-- <div class="mb-3">
 					  <label for="file" class="form-label">FILE</label>
 					  <input type="file" class="form-control" name="files">
 					</div>
 					<div class="mb-3">
 					  <label for="file" class="form-label">FILE</label>
 					  <input type="file" class="form-control" name="files">
-					</div>
-					
-					<div class="mb-3">
+					</div> -->
+
+					<div class="mb-3" id="add">
 
 					</div>
 					<div class="mb-3">
-						<button type="button">FileAdd</button>
+						<button type="button" id="fileAdd" class="btn btn-outline-primary">FileAdd</button>
 					</div>
 
 					<div>
@@ -51,11 +55,11 @@
 		</div>
 	</div>	
 	
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$("#contents").summernote({
         tabsize: 2,
         height: 100
 	});
-</script>
+</script> -->
 </body>
 </html>

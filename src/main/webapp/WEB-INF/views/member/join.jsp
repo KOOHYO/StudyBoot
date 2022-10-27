@@ -59,13 +59,6 @@
 						<button type="button" id="joinBtn" class="btn btn-outline-primary"><b>✅회원가입</b></button>
 					</div>
 				</form>
-
-				<!-- POST Button -->
-				<div>
-					<button type="button" id="test" class="btn btn-outline-primary">Test</button>
-					<button type="button" id="test2" class="btn btn-outline-primary">Ajax GET Test</button>
-					<button type="button" id="test3" class="btn btn-outline-primary">Ajax POST Test</button>
-				</div>
 			</div>
 		</div>
 	</div>
