@@ -14,6 +14,14 @@ public class MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+	public int getIdCheck(MemberVO memberVO)throws Exception{
+		return memberMapper.getIdCheck(memberVO);
+	}
+	
+	public MemberVO getLogin(MemberVO memberVO)throws Exception{
+		return memberMapper.getLogin(memberVO);
+	}
+	
 	public int setJoin(MemberVO memberVO)throws Exception{
 		int result = memberMapper.setJoin(memberVO);
 		//강제로 Exception 발생시킴
@@ -28,14 +36,6 @@ public class MemberService {
 		}
 		
 		return result;
-	}
-	
-	public MemberVO getLogin(MemberVO memberVO)throws Exception{
-		return memberMapper.getLogin(memberVO);
-	}
-	
-	public int getIdCheck(MemberVO memberVO)throws Exception{
-		return memberMapper.getIdCheck(memberVO);
 	}
 	
 }

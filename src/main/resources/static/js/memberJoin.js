@@ -34,46 +34,34 @@ let results = [false, false, false, false, false];
 
 //ID 확인
 $("#ipId").blur(function(){
+
+    let id = $("#ipId").val();
+
     let result = nullCheck($("#ipId").val(), $("#ipIdResult"), "아이디는");
     results[0]=result;
-});
 
-//ID 중복 확인
-$("#ipId").blur(function(){
-    let id = $("#ipId").val();
-    // ---------- Ajax ----------
-    // 1. 객체 생성
-    let xhttp = new XMLHttpRequest();
-    // 2. URL 준비
-    xhttp.open("POST", "/member/idCheck");
-    // 3. header 정보
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // 4. 요청발생
-    xhttp.send("id="+id);
-    xhttp.onreadystatechange=function(){
-        if(this.readyState==4 && this.status==200){
-            if(this.responseText.trim()=='1'){
-                $("#ipIdResult").html("이미 있는 아이디 입니다");
-            }else{
-                $("#ipIdResult").html("사용 가능한 아이디 입니다");
-            }
-        }
-    }
-});
-
-//PW 확인
-$("#ipPw").on({
-    blur:function(){
-        console.log("블러 이벤트");
-        let result = nullCheck($("#ipPw").val(), $("#ipPwResult"), "비밀번호는");
-        results[1]=result;
-    },
-    change:function(){
-        console.log("체인지 이벤트");
-        $("#ipPwCheckResult").html("");
-        $("#ipPwCheck").val("");
-        results[2]=false;
-    }
+    // ---------- ID 중복 확인 ----------
+    $.get("./idCheck?id="+id, function(data){
+        console.log("Data : "+data);
+    })
+    // // ---------- Ajax ----------
+    // // 1. 객체 생성
+    // let xhttp = new XMLHttpRequest();
+    // // 2. URL 준비
+    // xhttp.open("POST", "/member/idCheck");
+    // // 3. header 정보
+    // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // // 4. 요청발생
+    // xhttp.send("id="+id);
+    // xhttp.onreadystatechange=function(){
+    //     if(this.readyState==4 && this.status==200){
+    //         if(this.responseText.trim()=='1'){
+    //             $("#ipIdResult").html("이미 있는 아이디 입니다");
+    //         }else{
+    //             $("#ipIdResult").html("사용 가능한 아이디 입니다");
+    //         }
+    //     }
+    // }
 });
 
 //PW 같은지 확인
