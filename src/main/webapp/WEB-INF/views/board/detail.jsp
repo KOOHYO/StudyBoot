@@ -50,7 +50,11 @@
 						</p>
 					</c:forEach>
 				</div>
-					
+				
+				<div>
+					<a href="update?num=${vo.num}" class="btn btn-info">UPDATE</a>
+				</div>	
+				
 				<div>
 					<a href="./add" class="btn btn-info">WRITE</a>
 				</div>	

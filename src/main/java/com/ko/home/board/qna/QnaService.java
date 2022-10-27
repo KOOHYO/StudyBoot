@@ -30,6 +30,19 @@ public class QnaService {
 	@Value("${app.upload.qna}")
 	private String path;
 	
+	public int setFileDelete(QnaFileVO qnaFileVO)throws Exception{
+		qnaFileVO = qnaMapper.getFileDetail(qnaFileVO);
+		int result = qnaMapper.setFileDelete(qnaFileVO);
+		if() {
+			
+		}
+		return result;
+	}
+	
+	public int setUpdate(QnaVO qnaVO)throws Exception{
+		return qnaMapper.setUpdate(qnaVO);
+	}
+	
 	//예외가 발생하면 롤백을 시켜라
 	@Transactional(rollbackFor = Exception.class)
 	public int setAdd(QnaVO qnaVO)throws Exception{

@@ -14,16 +14,20 @@
 	<div class="container">
 		<div class="row justify-content-md-center">
 			<div class="col-7">
-				<h1>Write Page</h1>
+				<h1>Write Update Page</h1>
 				<form action="add" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
+					  <input type="hidden" class="form-control" value="${vo.num}" name="num" id="num">
+					</div>
+				
+					<div class="mb-3">
 					  <label for="title" class="form-label">TITLE</label>
-					  <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력하세요">
+					  <input type="text" class="form-control" value="${vo.title}" name="title" id="title" placeholder="제목을 입력하세요">
 					</div>
 
 					<div class="mb-3">
 					  <label for="writer" class="form-label">WRITER</label>
-					  <input type="text" class="form-control" name="writer" id="writer" placeholder="작성자를 입력하세요">
+					  <input type="text" class="form-control" value="${vo.writer}" name="writer" id="writer" placeholder="작성자를 입력하세요">
 					</div>
 
 					<div class="mb-3">
@@ -41,14 +45,16 @@
 					</div> -->
 
 					<div class="mb-3" id="add">
-
+						<c:forEach items="${vo.qnaFileVOs}" var="fileVO">
+							<img src="/file/qna/${fileVO.fileName}"><button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">삭제</button>
+						</c:forEach>
 					</div>
 					<div class="mb-3">
 						<button type="button" id="fileAdd" class="btn btn-outline-primary">FileAdd</button>
 					</div>
 
 					<div>
-						<button class="btn btn-info">WRITE</button>
+						<button class="btn btn-info">UPDATE</button>
 					</div>
 				</form>
 			</div>
@@ -60,6 +66,8 @@
         tabsize: 4,
         height: 250
 	});
+	
+	$('#contents').summernote('code', '${vo.contents}')
 </script>
 </body>
 </html>

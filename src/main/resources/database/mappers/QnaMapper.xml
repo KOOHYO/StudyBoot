@@ -4,6 +4,14 @@
 		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ko.home.board.qna.QnaMapper">
 	
+	<delete id="setFileDelete" parameterType="QnaFileVO">
+		DELETE FROM QNAFILES WHERE FILENUM=#{fileNum}
+	</delete>
+	
+	<update id="setUpdate" parameterType="QnaVO">
+		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents} WHERE NUM=#{num}
+	</update>
+	
 	<select id="getList" parameterType="Pager" resultType="QnaVO">
 		SELECT * FROM QNA
 		ORDER BY NUM DESC

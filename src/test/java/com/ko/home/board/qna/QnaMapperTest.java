@@ -24,13 +24,13 @@ class QnaMapperTest {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
-	@Value("${my.default}")
-	private String app;
+//	@Value("${my.default}")
+//	private String app;
 	
 	@Autowired
 	private QnaMapper qnaMapper;
 	
-	private QnaVO qnaVO;
+	//private QnaVO qnaVO;
 	
 	//@BeforeAll
 	static void beforeAll() {
@@ -45,9 +45,9 @@ class QnaMapperTest {
 	//@BeforeEach
 	void beforeEach() {
 		System.out.println("Test 메서드 실행 전");
-		qnaVO = new QnaVO();
-		qnaVO.setNum(1L);
-		qnaVO.setContents("contents");
+//		qnaVO = new QnaVO();
+//		qnaVO.setNum(1L);
+//		qnaVO.setContents("contents");
 	}
 	
 	//@AfterEach
@@ -55,11 +55,21 @@ class QnaMapperTest {
 		System.out.println("Test 메서드 실행 후");
 	}
 	
+	@Test
+	void setUpdateTest()throws Exception{
+		QnaVO qnaVO = new QnaVO();
+		qnaVO.setNum(6L);
+		qnaVO.setContents("반갑습니다");
+		qnaVO.setTitle("ㅎㅎㅎㅎㅎ");
+		int result = qnaMapper.setUpdate(qnaVO);
+		assertEquals(result, 1);
+	}
+	
 	//@Test
 	void test()throws Exception {
 //		qnaMapper.setAdd(qnaVO);
 //		qnaMapper.setDelete(qnaVO);
-		log.info("---------------- {} ------------------", app);
+		//log.info("---------------- {} ------------------", app);
 		QnaVO qnaVO = new QnaVO();
 		qnaVO.setWriter("ㅎㅇ");
 		qnaVO.setTitle("gd");
