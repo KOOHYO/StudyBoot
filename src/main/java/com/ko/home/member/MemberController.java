@@ -21,9 +21,27 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@ResponseBody
+	@PostMapping("test")
+	public MemberVO setTest(MemberVO memberVO, String [] ar)throws Exception{
+		log.info("==============================");
+		log.info("ID : {} ", memberVO.getId());
+		log.info("NAME : {} ", memberVO.getName());
+		
+		for(String s : ar) {
+			log.info("ar : {} ", s);
+		}
+		
+		return memberVO;
+	}
+	
+	@ResponseBody
 	@GetMapping("idCheck")
 	public int getIdCheck(MemberVO memberVO)throws Exception{
 		int result = memberService.getIdCheck(memberVO);
+	
+//		if(result==0) {
+//			throw new Exception("테스트임 놀람X");
+//		}
 		
 		return result;
 	}
