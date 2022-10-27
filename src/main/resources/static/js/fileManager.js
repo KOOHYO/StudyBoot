@@ -51,7 +51,7 @@ $(".deleteFile").click(function(){
                 console.log("result : ", result);
                 //여기서 this는 XhttpRequest 객체이다
                 console.log("After Result This : ", $(this));
-                $(btn).parent().remove.();
+                $(btn).parent().remove();
             },
             error:function(){
                 console.log("Error 발생");

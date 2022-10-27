@@ -33,9 +33,12 @@ public class QnaService {
 	public int setFileDelete(QnaFileVO qnaFileVO)throws Exception{
 		qnaFileVO = qnaMapper.getFileDetail(qnaFileVO);
 		int result = qnaMapper.setFileDelete(qnaFileVO);
-		if() {
-			
+		
+		if(result>0) {
+			File file = new File(path, qnaFileVO.getFileName());
+			file.delete();
 		}
+		
 		return result;
 	}
 	

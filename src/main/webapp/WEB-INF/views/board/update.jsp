@@ -46,7 +46,9 @@
 
 					<div class="mb-3" id="add">
 						<c:forEach items="${vo.qnaFileVOs}" var="fileVO">
-							<img src="/file/qna/${fileVO.fileName}"><button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">삭제</button>
+							<div>
+								<img src="/file/qna/${fileVO.fileName}"><button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">삭제</button>
+							</div>
 						</c:forEach>
 					</div>
 					<div class="mb-3">
