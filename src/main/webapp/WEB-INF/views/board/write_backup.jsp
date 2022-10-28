@@ -16,26 +16,20 @@
 		<div class="row justify-content-md-center">
 			<div class="col-7">
 				<h1>Write Page</h1>
-				<form:form action="./add" method="post" modelAttribute="qnaVO" enctype="multipart/form-data">
+				<form action="add" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
 					  <label for="title" class="form-label">TITLE</label>
-					  <form:input path="title" id="ipTitle" cssClass="form-control"/>
-					  <form:errors path="title"></form:errors>
-					  <div id="titleResult"></div>
+					  <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력하세요">
 					</div>
 
 					<div class="mb-3">
 					  <label for="writer" class="form-label">WRITER</label>
-					  <form:input path="writer" id="ipWriter" cssClass="form-control"/>
-					  <form:errors path="writer"></form:errors>
-					  <div id="writerResult"></div>
+					  <input type="text" class="form-control" name="writer" id="writer" placeholder="작성자를 입력하세요">
 					</div>
 
 					<div class="mb-3">
 					  <label for="contents" class="form-label">CONTENTS</label>
-					  <form:textarea path="contents" id="ttContents" cssClass="form-control"/>
-					  <form:errors path="contents"></form:errors>
-					  <div id="contentsResult"></div>
+					  <textarea class="form-control" name="contents" id="contents"></textarea>
 					</div>
 
 					<!-- <div class="mb-3">
@@ -55,15 +49,15 @@
 					</div>
 
 					<div>
-						<button type="submit" class="btn btn-info">WRITE</button>
+						<button class="btn btn-info">WRITE</button>
 					</div>
-				</form:form>
+				</form>
 			</div>
 		</div>
 	</div>	
 	
 <script type="text/javascript">
-	$('#ttContents').summernote({
+	$('#contents').summernote({
         tabsize: 4,
         height: 250
 	});
