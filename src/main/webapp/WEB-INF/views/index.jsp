@@ -19,6 +19,7 @@
 			<h3><a href="./qna/list">QNA</a></h3>
 			<c:choose>
 				<c:when test="${not empty member}">
+					<h3>🎉${member.name}님 환영합니다~🎉</h3>
 					<h3><a href="./member/logout">로그아웃</a>	</h3>	
 				</c:when>
 				<c:when test="${empty member}">

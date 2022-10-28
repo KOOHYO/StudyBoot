@@ -44,10 +44,13 @@
 					  <input type="file" class="form-control" name="files">
 					</div> -->
 
-					<div class="mb-3" id="add">
+					<div class="mb-3" id="add" data-file-size="${vo.qnaFileVOs.size()}">
 						<c:forEach items="${vo.qnaFileVOs}" var="fileVO">
+							<!-- 여기에 img는 button의 형제 -->
+							<!-- 그래서 부모는 id="add"인 div임 -->
+							<!-- 그래서 안에 다른 img도 없어지기 때문에 새로운 div로 감싼다 -->
 							<div>
-								<img src="/file/qna/${fileVO.fileName}"><button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">삭제</button>
+								<img src="/file/qna/${fileVO.fileName}"><button type="button" class="btn btn-danger deleteFile" data-file-num="${fileVO.fileNum}">삭제</button>
 							</div>
 						</c:forEach>
 					</div>
@@ -70,6 +73,7 @@
 	});
 	
 	$('#contents').summernote('code', '${vo.contents}')
+	
 </script>
 </body>
 </html>
