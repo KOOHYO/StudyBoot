@@ -19,7 +19,7 @@ public class MemberVO {
 	@NotBlank(message = "아이디는 필수입니다.")
 	private String id;
 	@NotBlank
-	@Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*\\\\\\\\W)(?=\\\\\\\\S+$).{6,12}")
+	@Pattern(regexp = "비밀번호 재확인")
 	private String pw;
 	private String pwCheck;
 	@NotBlank

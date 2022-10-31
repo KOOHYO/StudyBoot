@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <c:import url="../temp/boot.jsp"></c:import>
 <script defer src="/js/util.js"></script>
-<!-- <script defer src="/js/memberJoin.js"></script> -->
+<script defer src="/js/memberJoin.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -23,8 +23,9 @@
 					<div class="my-4">
 						<label for="ipId" class="form-label"><b>아이디</b></label>
 						<form:input id="ipId" path="id" cssClass="form-control border-primary border-opacity-25"/>
-						<form:errors path="id"></form:errors>
-						<div class="text-danger" id="ipIdResult"></div>
+						<div class="text-danger" id="ipIdResult">
+							<form:errors path="id"></form:errors>
+						</div>
 					</div>
 					
 					<div class="my-4">
@@ -44,8 +45,10 @@
 					<div class="mb-4">
 						<label for="ipName" class="form-label"><b>이름</b></label>
 						<form:input path="name" cssClass="form-control border-primary border-opacity-25" id="ipName"/>
-						<form:errors path="name"></form:errors>
-						<div class="text-danger" id="ipNameResult"></div>
+						<%-- <form:errors path="name"></form:errors> --%>
+						<div class="text-danger" id="ipNameResult">
+							${name}
+						</div>
 					</div>
 					
 					<div class="mb-4">
