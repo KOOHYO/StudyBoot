@@ -1,10 +1,18 @@
 package com.ko.home.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -66,15 +74,45 @@ public class MemberController {
 //	}
 	
 	@GetMapping("join")
-	public String setJoin()throws Exception{
-		
-		return "member/join";
+	public void setJoin(@ModelAttribute MemberVO memberVO)throws Exception{
+//		MemberVO memberVO = new MemberVO();
+//		model.addAttribute(memberVO);
+//		return "member/join";
 	}
 	
 	@PostMapping("join")
-	public ModelAndView setJoin(MemberVO memberVO)throws Exception{
+	public ModelAndView setJoin(ModelAndView mv, @Valid MemberVO memberVO, BindingResult bindingResult)throws Exception{
 
-		ModelAndView mv = new ModelAndView();
+//		if(bindingResult.hasErrors()) {
+//			//검증에 실패하면 회원가입하는 JSP로 foward
+//			log.info("======== 검증 에러 발생 ========");
+//			mv.setViewName("member/join");
+//			return mv;
+//		}
+		
+		boolean check = memberService.getMemberError(memberVO, bindingResult);
+		if(check) {
+			log.info("====== 검증 에러 발생 ======");
+			mv.setViewName("member/join");
+			// ===================================
+			
+			List<FieldError> errors = bindingResult.getFieldErrors();
+			
+			for(FieldError error : errors) {
+				log.info("error => {} ", error);
+				log.info("Field => {} ", error.getField());
+				log.info("Message => {} ", error.getRejectedValue());
+				log.info("Default => {} ", error.getDefaultMessage());
+				log.info("Code => {} ", error.getCode());
+				// error 필드명이 속성명이되고 message가 값이 된다
+				mv.addObject(error.getField(), error.getDefaultMessage());
+				log.info("==========================================================");
+			}
+			
+			return mv;
+		}
+		
+		//ModelAndView mv = new ModelAndView();
 		
 		int result = memberService.setJoin(memberVO);
 		

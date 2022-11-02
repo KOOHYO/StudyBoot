@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +14,16 @@
 	<div class="container">
 		<div class="my-5">
 			<h1><b>Index Page</b></h1>
+			<h1><spring:message code="hi"></spring:message> </h1>
 		</div>
 		<img src="./images/cat.jpg">
 		<div class="row my-3">
 			<h3><a href="./qna/list">QNA</a></h3>
 			<c:choose>
 				<c:when test="${not empty member}">
-					<h3>🎉${member.name}님 환영합니다~🎉</h3>
+					<h3><spring:message code="welcome" arguments="${member.name}"></spring:message> </h3>
+					<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message> </h3>
+					<%-- <h3>🎉${member.name}님 환영합니다~🎉</h3> --%>
 					<h3><a href="./member/logout">로그아웃</a>	</h3>	
 				</c:when>
 				<c:when test="${empty member}">
