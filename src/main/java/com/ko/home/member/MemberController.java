@@ -41,27 +41,29 @@ public class MemberController {
 		
 		return "member/login";
 	}
-	
-	@PostMapping("login")
-	public ModelAndView getLogin(MemberVO memberVO, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		memberVO = memberService.getLogin(memberVO);
-		
-		String message = "❗로그인을 실패했습니다..❗";
-		String url = "./login";
-		if(memberVO != null) {
-			message = "🎉로그인을 성공했습니다!!🎉";
-			url = "../";
-			session.setAttribute("member", memberVO);
-		}
-		
-		mv.addObject("message", message);
-		mv.addObject("url", url);
-		mv.setViewName("common/result");
-		
-		return mv;
-	}
+
+	// Spring Security가 로그인 처리를 해준다
+	// id = username, pw = password
+//	@PostMapping("login")
+//	public ModelAndView getLogin(MemberVO memberVO, HttpSession session)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		memberVO = memberService.getLogin(memberVO);
+//		
+//		String message = "❗로그인을 실패했습니다..❗";
+//		String url = "./login";
+//		if(memberVO != null) {
+//			message = "🎉로그인을 성공했습니다!!🎉";
+//			url = "../";
+//			session.setAttribute("member", memberVO);
+//		}
+//		
+//		mv.addObject("message", message);
+//		mv.addObject("url", url);
+//		mv.setViewName("common/result");
+//		
+//		return mv;
+//	}
 	
 	@GetMapping("join")
 	public String setJoin()throws Exception{
