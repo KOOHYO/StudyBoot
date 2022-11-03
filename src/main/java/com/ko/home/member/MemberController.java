@@ -41,13 +41,13 @@ public class MemberController {
 		return result;
 	}
 	
-	@GetMapping("logout")
-	public String setLogout(HttpSession session)throws Exception{
-		log.info("====== 내가만든 로그아웃 ======");
-		session.invalidate();
-
-		return "redirect:../";
-	}
+//	@GetMapping("logout")
+//	public String setLogout(HttpSession session)throws Exception{
+//		log.info("====== 내가만든 로그아웃 ======");
+//		session.invalidate();
+//
+//		return "redirect:../";
+//	}
 	
 	@GetMapping("login")
 	public String getLogin()throws Exception{
