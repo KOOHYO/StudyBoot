@@ -42,7 +42,7 @@ public class SecurityConfig {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/logout").permitAll()
 				.antMatchers("/admin").hasRole("ADMIN")
-				.antMatchers("/manager").hasRole("MANAGER")
+				.antMatchers("/manager").hasAnyRole("ADMIN", "MANAGER")
 				.antMatchers("/qna/list").permitAll()
 				.antMatchers("/qna/**").hasRole("MEMBER")
 				.anyRequest().permitAll()
@@ -57,6 +57,10 @@ public class SecurityConfig {
 				.permitAll()
 				.and()
 			.logout()
+				//.logoutUrl("/member/logout")
+				.logoutSuccessUrl("/")      // 로그아웃성공하면 어디로 갈까
+				.invalidateHttpSession(true)// 세션정보를 파기 true면 하겠다는뜻
+				.deleteCookies("JSESSIONID")
 				.permitAll();
 				
 		return security.build();

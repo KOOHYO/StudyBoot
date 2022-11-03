@@ -28,6 +28,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@GetMapping("mypage")
+	public String getMyPage()throws Exception{
+		return "member/myPage";
+	}
+	
 	@ResponseBody
 	@GetMapping("idCheck")
 	public int getIdCheck(MemberVO memberVO)throws Exception{
@@ -38,7 +43,7 @@ public class MemberController {
 	
 	@GetMapping("logout")
 	public String setLogout(HttpSession session)throws Exception{
-		
+		log.info("====== 내가만든 로그아웃 ======");
 		session.invalidate();
 
 		return "redirect:../";

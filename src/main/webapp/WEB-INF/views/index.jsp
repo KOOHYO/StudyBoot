@@ -24,14 +24,19 @@
 			<!-- 로그인 성공 -->
 			<!-- 인증이 되었습니까? 인증이 되었으면 보여주세요 -->
 			<sec:authorize access="isAuthenticated()">
+				<sec:authentication property="Principal" var="member"/>
 				<h3><spring:message code="welcome" arguments="${member.name}"></spring:message> </h3>
 				<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message> </h3>
+				<a href="./member/mypage">myPage</a>
 				<%-- <h3>🎉${member.name}님 환영합니다~🎉</h3> --%>
 				<h3><a href="./member/logout">로그아웃</a>	</h3>	
 				
 				<!-- SecurityConfig에 antMatchers 처럼 설정 -->
-				<sec:authorize access="hasRole('ADMIN')">
-					<a href="/admin"></a>
+				<sec:authorize url="/admin">
+					<a href="/admin">GO Admin</a>
+				</sec:authorize>
+				<sec:authorize access="hasAnyRole('MANAGER', 'MEMBER')">
+					<a href="/manager">GO Manager</a>
 				</sec:authorize>
 			</sec:authorize>
 
