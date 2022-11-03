@@ -8,8 +8,8 @@
 		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id}
 	</select>
 	
-	<select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
-		SELECT M.ID, M.NAME, M.EMAIL, MR.NUM, R.ROLENAME
+	<select id="getLogin" parameterType="String" resultMap="getLoginResult">
+		SELECT M.*, R.*
 		FROM MEMBER M
 			INNER JOIN
 			MEMBER_ROLE MR
@@ -17,11 +17,12 @@
 			INNER JOIN
 			ROLE R
 			ON (MR.NUM = R.NUM)
-		WHERE M.ID=#{id} AND M.PW=#{pw}
+		WHERE M.ID=#{username}
 		ORDER BY R.NUM ASC
 	</select>
 	<resultMap type="MemberVO" id="getLoginResult">
 		<id column="ID" property="id"/>
+		<result column="PW" property="pw"/>
 		<result column="NAME" property="name"/>
 		<result column="EMAIL" property="email"/>
 		<collection property="memberRoleVOs" javaType="List" ofType="MemberRoleVO">

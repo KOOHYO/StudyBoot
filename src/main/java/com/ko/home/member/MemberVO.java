@@ -54,13 +54,13 @@ public class MemberVO implements UserDetails {
 			// authorities.add List에 데이터를 추가
 			authorities.add(new SimpleGrantedAuthority(memberRoleVO.getRoleName()));
 		}
-		return null;
+		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.pw;
 	}
 
 	@Override
@@ -97,5 +97,8 @@ public class MemberVO implements UserDetails {
 	// 계정 사용 여부
 	// true  : 계정 활성화(계정 사용 가능)
 	// false : 계정 비활성화(계정 사용 불가, 로그인 불가)
+	public boolean isEnabled() {
+		return true;
+	}
 	
 }

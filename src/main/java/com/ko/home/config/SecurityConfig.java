@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -58,6 +60,13 @@ public class SecurityConfig {
 				.permitAll();
 				
 		return security.build();
+	}
+	
+	// 평문(Clear Text)을 암호화 시켜주는 객체생성
+	@Bean
+	public PasswordEncoder getEncoder() {
+		// BCryptPasswordEncoder : 평문패스워드를 암호화 시켜주는 클래스다
+		return new BCryptPasswordEncoder();
 	}
 	
 }

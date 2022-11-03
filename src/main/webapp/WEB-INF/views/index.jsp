@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,18 +20,28 @@
 		<img src="./images/cat.jpg">
 		<div class="row my-3">
 			<h3><a href="./qna/list">QNA</a></h3>
-			<c:choose>
-				<c:when test="${not empty member}">
-					<h3><spring:message code="welcome" arguments="${member.name}"></spring:message> </h3>
-					<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message> </h3>
-					<%-- <h3>🎉${member.name}님 환영합니다~🎉</h3> --%>
-					<h3><a href="./member/logout">로그아웃</a>	</h3>	
-				</c:when>
-				<c:when test="${empty member}">
-					<h3><a href="./member/join">회원가입</a></h3>
-					<h3><a href="./member/login">로그인</a></h3>
-				</c:when>
-			</c:choose>
+
+			<!-- 로그인 성공 -->
+			<!-- 인증이 되었습니까? 인증이 되었으면 보여주세요 -->
+			<sec:authorize access="isAuthenticated()">
+				<h3><spring:message code="welcome" arguments="${member.name}"></spring:message> </h3>
+				<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message> </h3>
+				<%-- <h3>🎉${member.name}님 환영합니다~🎉</h3> --%>
+				<h3><a href="./member/logout">로그아웃</a>	</h3>	
+				
+				<!-- SecurityConfig에 antMatchers 처럼 설정 -->
+				<sec:authorize access="hasRole('ADMIN')">
+					<a href="/admin"></a>
+				</sec:authorize>
+			</sec:authorize>
+
+			<!-- 로그인 전 -->
+			<sec:authorize access="!isAuthenticated()">
+				<h3><a href="./member/join">회원가입</a></h3>
+				<h3><a href="./member/login">로그인</a></h3>
+			</sec:authorize>
+
+
 		</div>
 		
 		<!-- 구분선 -->

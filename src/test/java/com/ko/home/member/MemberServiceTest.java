@@ -5,12 +5,30 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 class MemberServiceTest {
 
 	@Autowired
+	private MemberMapper memberMapper;
+	
+	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Test
+	void test()throws Exception{
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId("koo2");
+		memberVO.setPw(passwordEncoder.encode("koo2"));
+		memberVO.setName("구2");
+		memberVO.setEmail("koo2@gmail.com");
+		int result = memberMapper.setJoin(memberVO);
+		assertEquals(1, result);
+	}
 	
 	//@Test
 	void setJoinTest() throws Exception {
@@ -28,11 +46,12 @@ class MemberServiceTest {
 	
 	//@Test
 	void getLoginTest()throws Exception{
+		String username=null;
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId("koo");
 		memberVO.setPw("koo");
 		
-		memberVO = memberService.getLogin(memberVO);
+		//memberVO = memberService.getLogin(username);
 		
 		assertNotNull(memberVO);
 		

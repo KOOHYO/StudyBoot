@@ -51,9 +51,9 @@ public class MemberService {
 	}
 	
 	// 로그인
-	public MemberVO getLogin(MemberVO memberVO)throws Exception{
-		return memberMapper.getLogin(memberVO);
-	}
+//	public MemberVO getLogin(String username)throws Exception{
+//		return memberMapper.getLogin(username);
+//	}
 	
 	// 회원가입
 	public int setJoin(MemberVO memberVO)throws Exception{
