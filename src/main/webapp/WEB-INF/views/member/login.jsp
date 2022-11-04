@@ -25,7 +25,7 @@
 				  </div>
 				  <div class="mb-3">
 				    <label for="ipPw" class="form-label">비밀번호</label>
-				    <input type="password" name="pw" class="form-control border-primary border-opacity-25" id="ipPw">
+				    <input type="password" name="pw" value="koo2" class="form-control border-primary border-opacity-25" id="ipPw">
 				  </div>
 				  <div class="mb-3">
 				    <label for="ipPw" class="form-label">ID기억하기</label>
@@ -36,5 +36,8 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		//history.replaceState({}, null, location.pathname)
+	</script>
 </body>
 </html>
