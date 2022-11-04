@@ -1,6 +1,7 @@
 package com.ko.home.config;
 
 import org.aspectj.weaver.ast.And;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.YamlMapFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,10 +12,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.ko.home.member.security.LoginSuccess;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+	// 만든것을 실행
+	@Autowired
+	private LoginSuccess loginSuccess;
+	
 	@Bean
 	// public 을 선언하면 default로 바꾸라는 메세지가 출력됨
 	WebSecurityCustomizer webSecurityConfig() {
@@ -53,6 +60,7 @@ public class SecurityConfig {
 				.usernameParameter("id")	// 패스워드 파라미터는 password이지만, 개발자가 다른 파라미터 이름을 사용할 때
 				.passwordParameter("pw")	// 아이디 파라미터는 username이지만, 개발자가 다른 파라미터 이름을 사용할 때
 				.defaultSuccessUrl("/")		// 인증(로그인)에 성공할 경우 요청할 URL
+				.successHandler(loginSuccess)
 				.failureUrl("/member/login")// 인증(로그인)에 실패했을 경우 요청할 URL
 				.permitAll()
 				.and()

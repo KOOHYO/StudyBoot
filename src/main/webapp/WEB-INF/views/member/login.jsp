@@ -24,6 +24,10 @@
 				    <label for="ipPw" class="form-label">비밀번호</label>
 				    <input type="password" name="pw" class="form-control border-primary border-opacity-25" id="ipPw">
 				  </div>
+				  <div class="mb-3">
+				    <label for="ipPw" class="form-label">ID기억하기</label>
+				    <input type="checkbox" name="rememberId" class="form-check-input" id="ipPw">
+				  </div>
 				  <button type="submit" class="btn btn-outline-primary">Submit</button>
 				</form>
 			</div>
