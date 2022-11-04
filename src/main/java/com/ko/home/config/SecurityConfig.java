@@ -59,9 +59,9 @@ public class SecurityConfig {
 				//.loginProcessingUrl("login")	// 로그인을 진행 요청할 form 태그의 action의 주소 지정
 				.usernameParameter("id")	// 패스워드 파라미터는 password이지만, 개발자가 다른 파라미터 이름을 사용할 때
 				.passwordParameter("pw")	// 아이디 파라미터는 username이지만, 개발자가 다른 파라미터 이름을 사용할 때
-				.defaultSuccessUrl("/")		// 인증(로그인)에 성공할 경우 요청할 URL
+				//.defaultSuccessUrl("/")		// 인증(로그인)에 성공할 경우 요청할 URL
 				.successHandler(loginSuccess)
-				//.failureUrl("/member/login")// 인증(로그인)에 실패했을 경우 요청할 URL
+				.failureUrl("/member/login?error=true&message=LoginFail")// 인증(로그인)에 실패했을 경우 요청할 URL
 				.permitAll()
 				.and()
 			.logout()

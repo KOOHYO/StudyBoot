@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,9 +51,14 @@ public class MemberController {
 //	}
 	
 	@GetMapping("login")
-	public String getLogin()throws Exception{
+							// @RequestParam : 이 파라미터가 안넘어오면 이 파라미터를 매개변수로 받지 말자
+	public void getLogin(@RequestParam(defaultValue = "false", required = false) boolean error, String message, Model model)throws Exception{
+		//Controller에서 받아서 JSP로 다시 보내도 됨
 		
-		return "member/login";
+		if(error) {
+			model.addAttribute("msg", "아이디 또는 비밀번호가 일치하지 않습니다");
+		}
+		
 	}
 
 	// Spring Security가 로그인 처리를 해준다

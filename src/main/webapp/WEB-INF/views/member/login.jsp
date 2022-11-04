@@ -14,6 +14,9 @@
 			<div class="col-5">
 				<div class="my-4 text-center">
 					<h1><b>Login Page</b></h1>
+					<h3>${param.error}</h3>
+					<h3>${param.message}</h3>
+					<h3>${msg}</h3>
 				</div>
 				<form action="./login" method="post">
 				  <div class="mb-3">
