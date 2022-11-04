@@ -61,7 +61,7 @@ public class SecurityConfig {
 				.passwordParameter("pw")	// 아이디 파라미터는 username이지만, 개발자가 다른 파라미터 이름을 사용할 때
 				.defaultSuccessUrl("/")		// 인증(로그인)에 성공할 경우 요청할 URL
 				.successHandler(loginSuccess)
-				.failureUrl("/member/login")// 인증(로그인)에 실패했을 경우 요청할 URL
+				//.failureUrl("/member/login")// 인증(로그인)에 실패했을 경우 요청할 URL
 				.permitAll()
 				.and()
 			.logout()

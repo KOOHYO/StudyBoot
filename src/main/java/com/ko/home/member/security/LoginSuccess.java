@@ -37,12 +37,12 @@ public class LoginSuccess implements AuthenticationSuccessHandler {
 		log.info("Aut => {} ", authentication);
 		log.info("ID : {} ", request.getParameter("id"));
 		// authentication.getPrincipal() : MemberVO
-		// 체크를 하면 on 안하면 null
+		// 체크를 하면 : on 안하면 : null
 		log.info("Check -> {} ", request.getParameter("rememberId"));
 		
 		String check = request.getParameter("rememberId");
-		
-		if(check != null) {
+		// check.equals("on") : null이 들어오면 nullPoint이셉션 발생하기 때문에 null이 아니라면을 쓰는 것이 좋다
+		if(check != null && check.equals("on")) {
 			Cookie cookie = new Cookie("userId", request.getParameter("id"));
 			// 아이디 저장
 			cookie.setHttpOnly(true);
@@ -51,7 +51,21 @@ public class LoginSuccess implements AuthenticationSuccessHandler {
 			
 			response.addCookie(cookie);
 			
+		}else {
+			// 처음 요청 후 응답으로 JssesionId 쿠키가 응답으로 같이 감
+			// 쿠키가 여러개이기 때문에 반복문 돌림
+			Cookie [] cookies = request.getCookies();
+			for(Cookie cookie : cookies) {
+				// 그 안에서 우리가만든 쿠키의 이름을 찾음
+				if(cookie.getName().equals("userId")) {
+					cookie.setMaxAge(0); // 유효기간을 만료시킴
+					cookie.setPath("/"); // 주의!! Cooke 삭제시 Cookie 만들 때의 path와 동일해야 함
+					
+					response.addCookie(cookie);
+				}
+			}
 		}
+		
 		response.sendRedirect("/");
 	}
 }

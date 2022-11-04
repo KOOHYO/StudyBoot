@@ -18,7 +18,7 @@
 				<form action="./login" method="post">
 				  <div class="mb-3">
 				    <label for="ipId" class="form-label">아이디</label>
-				    <input type="text" name="id" class="form-control border-primary border-opacity-25" id="ipId">
+				    <input type="text" name="id" value="${cookie.userId.value}" class="form-control border-primary border-opacity-25" id="ipId">
 				  </div>
 				  <div class="mb-3">
 				    <label for="ipPw" class="form-label">비밀번호</label>
