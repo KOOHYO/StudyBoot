@@ -1,5 +1,7 @@
 package com.ko.home.config;
 
+import java.util.Arrays;
+
 import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.YamlMapFactoryBean;
@@ -11,7 +13,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.ko.home.member.MemberSecurityService;
 import com.ko.home.member.security.LoginFail;
 import com.ko.home.member.security.LoginSuccess;
 import com.ko.home.member.security.LogoutCustom;
@@ -34,6 +40,9 @@ public class SecurityConfig {
 	@Autowired
 	private LogoutSuccessCustom logoutSuccessCustom;
 	
+	@Autowired
+	private MemberSecurityService memberSecurityService;
+	
 	@Bean
 	// public 을 선언하면 default로 바꾸라는 메세지가 출력됨
 	WebSecurityCustomizer webSecurityConfig() {
@@ -52,10 +61,11 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity security)throws Exception {
 		security
-				.cors()
-				.and()
 				.csrf()
 				.disable()
+				.cors()
+				.configurationSource(this.corsConfigurationSource())
+				.and()
 			.authorizeRequests() // 어떤 URL의 요청에 권한을 설정
 				.antMatchers("/").permitAll() // 루트 밑 (인덱스)페이지는 누구나 허용한다
 				.antMatchers("/login").permitAll()
@@ -84,7 +94,14 @@ public class SecurityConfig {
 				.addLogoutHandler(logoutCustom)
 				.invalidateHttpSession(true)// 세션정보를 파기 true면 하겠다는뜻
 				.deleteCookies("JSESSIONID")
-				.permitAll();
+				.permitAll()
+				.and()
+			.rememberMe() // RememberMe 실행
+				.rememberMeParameter("rememberMe") // 기본 : remember-me -> 파라미터명 재설정
+				.tokenValiditySeconds(300)         // 로그인유지 유지시간, 초단위
+				.key("rememberMe") // 인증 받은 사용자의 정보로 Token 생성시 필요, 필수값
+				.userDetailsService(memberSecurityService) // 인증 절차를 실행할  UserDetailsService, 필수
+				.authenticationSuccessHandler(loginSuccess); // Login 성공 Handler
 				
 		return security.build();
 	}
@@ -94,6 +111,18 @@ public class SecurityConfig {
 	public PasswordEncoder getEncoder() {
 		// BCryptPasswordEncoder : 평문패스워드를 암호화 시켜주는 클래스다
 		return new BCryptPasswordEncoder();
+	}
+	
+	//@Bean 같은 클래스 내에 메서드를 객체를 만들지 말고 메서드 자체를 호출해서 쓰는 방법도 있음
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500")); // Allowed : 이쪽 URL로 오는것은 허락 하겠다, <T> : 타입, ...a : 여러개 넣을 수 있다는 뜻
+		configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
+		
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		
+		return source;
 	}
 	
 }

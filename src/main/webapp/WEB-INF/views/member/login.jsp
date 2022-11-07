@@ -18,7 +18,7 @@
 					<h3>${param.message}</h3>
 					<h3>${msg}</h3>
 				</div>
-				<form action="./login" method="post">
+				<form action="http://192.168.1.16" method="post">
 				  <div class="mb-3">
 				    <label for="ipId" class="form-label">아이디</label>
 				    <input type="text" name="id" value="${cookie.userId.value}" class="form-control border-primary border-opacity-25" id="ipId">
@@ -28,8 +28,8 @@
 				    <input type="password" name="pw" value="koo2" class="form-control border-primary border-opacity-25" id="ipPw">
 				  </div>
 				  <div class="mb-3">
-				    <label for="ipPw" class="form-label">ID기억하기</label>
-				    <input type="checkbox" name="rememberId" class="form-check-input" id="ipPw">
+				    <label for="ipPw" class="form-label">RememberMe</label>
+				    <input type="checkbox" name="rememberMe" class="form-check-input" id="ipPw">
 				  </div>
 				  <button type="submit" class="btn btn-outline-primary">Submit</button>
 				</form>
