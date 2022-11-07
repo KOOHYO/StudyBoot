@@ -48,7 +48,7 @@
 			<!-- 로그인 전 -->
 			<sec:authorize access="!isAuthenticated()">
 				<h3><a href="./member/join">회원가입</a></h3>
-				<h3><a href="/oauth2/authorization/kakao">카카오로그인</a></h3>
+				<!-- <h3><a href="/oauth2/authorization/kakao">카카오로그인</a></h3> -->
 				<h3><a href="./member/login">로그인</a></h3>
 			</sec:authorize>
 
