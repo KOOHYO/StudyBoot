@@ -30,6 +30,13 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@GetMapping("hack")
+	@ResponseBody
+	public int hack(QnaVO qnaVO)throws Exception{
+		qnaService.setAdd(qnaVO);
+		return 1;
+	}
+	
 	@ResponseBody
 	@PostMapping("fileDelete")
 	public int setFileDelete(QnaFileVO qnaFileVO)throws Exception{

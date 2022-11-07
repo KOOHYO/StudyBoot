@@ -18,7 +18,8 @@
 					<h3>${param.message}</h3>
 					<h3>${msg}</h3>
 				</div>
-				<form action="http://192.168.1.16" method="post">
+				<form action="./login" method="post">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				  <div class="mb-3">
 				    <label for="ipId" class="form-label">아이디</label>
 				    <input type="text" name="id" value="${cookie.userId.value}" class="form-control border-primary border-opacity-25" id="ipId">

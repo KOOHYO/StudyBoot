@@ -101,7 +101,11 @@ public class SecurityConfig {
 				.tokenValiditySeconds(300)         // 로그인유지 유지시간, 초단위
 				.key("rememberMe") // 인증 받은 사용자의 정보로 Token 생성시 필요, 필수값
 				.userDetailsService(memberSecurityService) // 인증 절차를 실행할  UserDetailsService, 필수
-				.authenticationSuccessHandler(loginSuccess); // Login 성공 Handler
+				.authenticationSuccessHandler(loginSuccess) // Login 성공 Handler
+				.and();
+//			.oauth2Login() // Social Login 설정
+//				.userInfoEndpoint()
+//				.userService(null)
 				
 		return security.build();
 	}
@@ -116,7 +120,7 @@ public class SecurityConfig {
 	//@Bean 같은 클래스 내에 메서드를 객체를 만들지 말고 메서드 자체를 호출해서 쓰는 방법도 있음
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500")); // Allowed : 이쪽 URL로 오는것은 허락 하겠다, <T> : 타입, ...a : 여러개 넣을 수 있다는 뜻
+		configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500", "http://192.168.1.20:5500", "http://192.168.1.2:5500", "*")); // Allowed : 이쪽 URL로 오는것은 허락 하겠다, <T> : 타입, ...a : 여러개 넣을 수 있다는 뜻
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST"));
 		
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

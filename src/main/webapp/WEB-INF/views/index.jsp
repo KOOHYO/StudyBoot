@@ -28,6 +28,11 @@
 				<h3><spring:message code="welcome" arguments="${member.name}"></spring:message> </h3>
 				<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message> </h3>
 				<a href="./member/mypage">myPage</a>
+				<a href="#" id="logout">Logout</a>
+				<form action="./member/logout" id="outForm">
+					<sec:csrfInput/>
+					<button>Logout</button>
+				</form>
 				<%-- <h3>🎉${member.name}님 환영합니다~🎉</h3> --%>
 				<h3><a href="./member/logout">로그아웃</a>	</h3>	
 				
@@ -43,6 +48,7 @@
 			<!-- 로그인 전 -->
 			<sec:authorize access="!isAuthenticated()">
 				<h3><a href="./member/join">회원가입</a></h3>
+				<h3><a href="/oauth2/authorization/kakao"></a></h3>
 				<h3><a href="./member/login">로그인</a></h3>
 			</sec:authorize>
 
@@ -61,5 +67,10 @@
 			<a href="/fileDown/notice?fileNum=17">NOTICEDOWN</a>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$("#logout").click(function() {
+			$("#outForm").submit();
+		})
+	</script>
 </body>
 </html>

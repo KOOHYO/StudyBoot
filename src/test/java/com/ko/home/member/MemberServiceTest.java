@@ -22,10 +22,10 @@ class MemberServiceTest {
 	//@Test
 	void test()throws Exception{
 		MemberVO memberVO = new MemberVO();
-		memberVO.setId("koo3");
-		memberVO.setPw(passwordEncoder.encode("koo3"));
-		memberVO.setName("구3");
-		memberVO.setEmail("koo3@gmail.com");
+		memberVO.setId("koo2");
+		memberVO.setPw(passwordEncoder.encode("koo2"));
+		memberVO.setName("구2");
+		memberVO.setEmail("koo2@gmail.com");
 		int result = memberMapper.setJoin(memberVO);
 		assertEquals(1, result);
 	}
