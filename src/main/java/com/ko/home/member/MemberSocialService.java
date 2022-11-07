@@ -14,7 +14,8 @@ public class MemberSocialService extends DefaultOAuth2UserService {
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-		log.info("-----------  ------------------------");
+		log.info("----------- Social Login 시도 -----------");
+		log.info("UserRequest => {} ", userRequest);
 		return super.loadUser(userRequest);
 	}
 	
