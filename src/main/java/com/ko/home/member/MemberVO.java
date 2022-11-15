@@ -3,10 +3,13 @@ package com.ko.home.member;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -21,7 +24,7 @@ import org.hibernate.validator.constraints.Range;
 import lombok.Data;
 
 @Data
-public class MemberVO implements UserDetails {
+public class MemberVO implements UserDetails, OAuth2User {
 	
 	@NotBlank(message = "아이디는 필수입니다.")
 	private String id;
@@ -43,7 +46,16 @@ public class MemberVO implements UserDetails {
 	private Date birth;
 	
 	private List<MemberRoleVO> memberRoleVOs;
+	
+	// ========= Social Login =========
+	// kakao, naver, google 등
+	private String social;
 
+	// OAuth2User, Token 등 저보 저장
+	// MemberSocialService의 auth2User.getAttributes()임
+	private Map<String, Object> attributes;
+	
+	
 	@Override
     // ?는 any 를 뜻함, extends GrantedAuthority 를 상속받는 아무타입이면 된다.
     // <? super T> T나 T의 부모타입을 허용하겠다 라는 뜻
@@ -99,6 +111,13 @@ public class MemberVO implements UserDetails {
 		// true  : 계정 활성화(계정 사용 가능)
 		// false : 계정 비활성화(계정 사용 불가, 로그인 불가)
 		return true;
+	}
+
+	// MemberSocialService의 auth2User.getAttributes()임
+	@Override
+	public Map<String, Object> getAttributes() {
+		// TODO Auto-generated method stub
+		return this.attributes;
 	}
 	
 }

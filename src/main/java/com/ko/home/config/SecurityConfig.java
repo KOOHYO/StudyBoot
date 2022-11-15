@@ -77,7 +77,7 @@ public class SecurityConfig {
 				.antMatchers("/admin").hasRole("ADMIN")
 				.antMatchers("/manager").hasAnyRole("ADMIN", "MANAGER")
 				.antMatchers("/qna/list").permitAll()
-				.antMatchers("/qna/**").hasRole("MEMBER")
+				//.antMatchers("/qna/**").hasRole("MEMBER")
 				.anyRequest().permitAll()
 				.and() // 이 설정이 끝났다
 			.formLogin() // 또 다른 설정시작 -> 로그인 폼 인증 설정
@@ -92,7 +92,7 @@ public class SecurityConfig {
 				.permitAll()
 				.and()
 			.logout()
-				//.logoutUrl("/member/logout")
+				.logoutUrl("/member/logout")
 				//.logoutSuccessUrl("/")      // 로그아웃성공하면 어디로 갈까
 				.logoutSuccessHandler(logoutSuccessCustom)
 				.addLogoutHandler(logoutCustom)

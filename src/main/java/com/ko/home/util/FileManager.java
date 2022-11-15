@@ -87,8 +87,15 @@ public class FileManager extends AbstractView {
 		
 		fileName = bf.toString();
 		
+		File file = new File(path);
+		
+		// 만약에 폴더가 없으면 에러가 발생하기 때문에 폴더를 생성
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		
 		//3. File Save
-		File file = new File(path, bf.toString());
+		file = new File(path, bf.toString());
 		
 		//FileCopyUtils
 		//MultipartFile

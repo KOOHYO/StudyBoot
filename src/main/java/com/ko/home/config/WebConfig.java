@@ -23,7 +23,7 @@ public class WebConfig implements WebMvcConfigurer {
 		// TODO Auto-generated method stub
 		log.info("========================================");
 		log.info("** FilePath ** {} ", filePath);
-		log.info("** UrlPath ** {} ", filePath);
+		log.info("** UrlPath ** {} ", urlPath);
 		log.info("========================================");
 		
 		//스프링 레거시 에서 이 역할을 함

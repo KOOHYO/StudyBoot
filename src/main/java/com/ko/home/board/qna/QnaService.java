@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +30,22 @@ public class QnaService {
 	
 	@Value("${app.upload.qna}")
 	private String path;
+	
+	public boolean setSummerFileDelete(String fileName)throws Exception{
+		fileName = fileName.substring(fileName.lastIndexOf("/")+1);
+		log.info("fileName => {} ", fileName);
+		File file = new File(path, fileName);
+		return file.delete();
+	}
+	
+	public String setSummerFile(MultipartFile files)throws Exception{
+		
+		log.info("Path => {} ",path);
+		String fileName = fileManager.saveFile(files, path);
+		log.info("Path => {} ",path);
+		fileName = "/file/qna/"+fileName;
+		return fileName;
+	}
 	
 	public int setFileDelete(QnaFileVO qnaFileVO)throws Exception{
 		qnaFileVO = qnaMapper.getFileDetail(qnaFileVO);

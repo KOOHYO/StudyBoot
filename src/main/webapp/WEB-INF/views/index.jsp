@@ -28,13 +28,14 @@
 				<h3><spring:message code="welcome" arguments="${member.name}"></spring:message> </h3>
 				<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message> </h3>
 				<a href="./member/mypage">myPage</a>
-				<a href="#" id="logout">Logout</a>
-				<form action="./member/logout" id="outForm">
+				<form id="outForm" action="./member/logout" method="post">
 					<sec:csrfInput/>
 					<button>Logout</button>
 				</form>
 				<%-- <h3>🎉${member.name}님 환영합니다~🎉</h3> --%>
-				<h3><a href="./member/logout">로그아웃</a>	</h3>	
+				<!-- <h3><a href="./member/logout">로그아웃</a></h3> -->	
+				
+				<a href="/member/delete">회원탈퇴</a>
 				
 				<!-- SecurityConfig에 antMatchers 처럼 설정 -->
 				<sec:authorize url="/admin">
@@ -48,7 +49,7 @@
 			<!-- 로그인 전 -->
 			<sec:authorize access="!isAuthenticated()">
 				<h3><a href="./member/join">회원가입</a></h3>
-				<!-- <h3><a href="/oauth2/authorization/kakao">카카오로그인</a></h3> -->
+				<h3><a href="/oauth2/authorization/kakao">카카오로그인</a></h3>
 				<h3><a href="./member/login">로그인</a></h3>
 			</sec:authorize>
 

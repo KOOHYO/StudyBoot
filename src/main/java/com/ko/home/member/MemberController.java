@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,6 +30,28 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	@GetMapping("logoutResult")
+	public String socialLogout()throws Exception{
+		return "redirect:../";
+	}
+	
+	@GetMapping("delete")
+	public ModelAndView setDelete(HttpSession session, String pw)throws Exception{
+		//1. Social, 일반 구분 social이 null이면 일반 kakao면 Social
+		ModelAndView mv = new ModelAndView();
+		SecurityContextImpl context = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
+		Authentication authentication = context.getAuthentication();
+		MemberVO memberVO = (MemberVO) authentication.getPrincipal();
+		int result = memberService.setDelete(memberVO);
+		
+		if(result>0) {
+			mv.setViewName("redirect:./logout");
+		}else {
+			// 탈퇴 실패
+		}
+		return mv;
+	}
 	
 	@GetMapping("mypage")
 	public String getMyPage()throws Exception{
